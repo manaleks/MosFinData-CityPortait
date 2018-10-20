@@ -63,7 +63,7 @@ def distr(distr):
         districts.insert(0, district)
         return render_template('main.html', districts=districts, regions=region)
 
-    return render_template('main.html', districts=districts)
+    return render_template('main.html', districts=distr)
 
 @app.route('/1/1')
 def hello():

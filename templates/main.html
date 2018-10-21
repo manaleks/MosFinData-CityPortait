@@ -54,16 +54,24 @@
             font-size: 16px;
         }
 
-        .col-sm-6 {
-            border: 2px solid black;
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 5px;
+            background-color: white;
+            padding: 5px;
         }
 
-        .col-sm-8 {
-            border: 2px solid black;
+        .grid-container>div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            
+            font-size: 16px;
         }
 
-        .col-sm-4 {
-            border: 2px solid black;
+        .item1 {
+            grid-column-start: 1;
+            grid-column-end: 3;
         }
     </style>
 
@@ -83,7 +91,6 @@
                 <div class="w3-container w3-third">
                     <form action="{{ url_for('main') }}" method="POST">
                         <div class="form-group">
-                            <!-- <input type="text" class="w3-input w3-light-grey" placeholder="Район" name="district" value="{{request.form.get('district','')}}"> -->
                             <div class="input-group">
                                 <span class="input-group-addon">Выберите район</span>
                                 <select name="district" class="selectpicker form-control">
@@ -95,112 +102,69 @@
                             <button type="submit" class="btn btn-primary w3-black button_RUN">Показать</button>
                         </div>
                     </form>
-
                     <div id="map"></div>
                 </div>
 
                 <div class="w3-twothird">
-
-                    <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Финансирование сфер
-                                    </div>
-                                    <div class="chart-stage">
-                                        <div id="grid-1-1">
-                                            <!-- <img data-src="holder.js/100%x240/white/text:#grid-1-1"> -->
-                                        </div>
-                                    </div>
-                                    <div class="chart-notes">
-                                        Дополнительная информация
-                                    </div>
-                                </div>
+                    <div class="grid-container">
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+                            <div class="item1">
+                                <!-- <img data-src="holder.js/100%x240/white/text:#grid-1-1"> -->
                             </div>
-                            <div class="col-sm-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Информация по объектам (торговые точки, учреждения и тп)
-                                    </div>
-                                    <div class="chart-stage">
-                                        <div id="log2">
-                                            <!-- <img data-src="holder.js/100%x240/white"> -->
-                                        </div>
-                                    </div>
-                                    <div class="chart-notes">
-                                        Дополнительная информация
-                                    </div>
-                                </div>
+                        </div>
+                        <div style="border:2px solid black;" class="w3-hover-border-green">
+                            <div class="chart-title">
+                                Информация по объектам (торговые точки, учреждения и тп)
+                            </div>
+                            <div class="item2">
+                                <!-- <img data-src="holder.js/100%x240/white"> -->
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Какие объекты вводятся в эксплуатацию
-                                    </div>
-                                    <div class="chart-stage">
-                                        <img data-src="holder.js/100%x120/white">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Какие ветки метро и когда вводятся
-                                    </div>
-                                    <div class="chart-stage">
-                                        <img data-src="holder.js/100%x120/white">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Аренда жилья
-                                    </div>
-                                    <div class="chart-stage">
-                                        <img data-src="holder.js/100%x120/white">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Запросы пользователей из Яндекс и Гугл
-                                    </div>
-                                    <div class="chart-stage">
-                                        <img data-src="holder.js/100%x120/white">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Позитивные новости
-                                    </div>
-                                    <div class="chart-stage">
-                                        <img data-src="holder.js/100%x120/white">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="chart-wrapper">
-                                    <div class="chart-title">
-                                        Заработные платы
-                                    </div>
-                                    <div class="chart-stage">
-                                        <img data-src="holder.js/100%x120/white">
-                                    </div>
-                                </div>
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+                            <div class="item3">
+                                Какие объекты вводятся в эксплуатацию
                             </div>
                         </div>
 
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+                            <div class="item4">
+                                Какие ветки метро и когда вводятся
+                            </div>
+
+                        </div>
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+
+
+                            <div class="item5">
+                                Аренда жилья
+                            </div>
+                        </div>
+
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+
+                            <div class="item6">
+                                Запросы пользователей из Яндекс и Гугл
+                            </div>
+
+                        </div>
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+
+                            <div class="item7">
+                                Позитивные новости
+                            </div>
+
+                        </div>
+                        <div style="border:2px solid black; " class="w3-hover-border-green">
+
+                            <div class="item8">
+                                Заработные платы
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
 
 
 
@@ -439,7 +403,7 @@
 
                         var regions = '{{ regions }}';
 
-                        document.getElementById("grid-1-1").innerHTML = '<iframe width="500" height="400" frameborder="9" scrolling="no" src="https://plot.ly/~manaleks/2.embed"></iframe>';
+                        document.getElementsByClassName("item1")[0].innerHTML = '<iframe width="500" height="500" frameborder="9" scrolling="no" src="https://plot.ly/~manaleks/6.embed"></iframe>';
                         //document.getElementById("log2").innerHTML = "Hello";
 
                         var res_regions = regions.replace(/&#39;/gi, '"');
@@ -448,10 +412,10 @@
 
                         dataaa = JSON.parse(w);
 
-                        var districts = [["Восточный", '#FF0000'], ["Западный", '#00FF00'], ["Зеленоградский", '#0000FF'], ["Новомосковский", '#000F0F'], ["Северный", '#0F040F'], ["Северо-Восточный", '#F000FF'], ["Северо-Западный", '#00F0FF'], ["Троицкий", '#F0F000'], ["Центральный", '#0FF0FF'], ["Юго-Восточный", '#F0F00F'], ["Юго-Западный", '#D0F00F'], ["Южный", '#FE00FE']]
+                        var districts = [["Восточный", '#1ABC9C'], ["Западный", '#16A085'], ["Зеленоградский", '#2ECC71'], ["Новомосковский", '#E74C3C'], ["Северный", '#F1C40F'], ["Северо-Восточный", '#CA2C68'], ["Северо-Западный", '#EA4C88'], ["Троицкий", '#2980B9'], ["Центральный", '#3498DB'], ["Юго-Восточный", '#F39C12'], ["Юго-Западный", '#34495E'], ["Южный", '#27AE60']]
                         for (i = 0; i < districts.length; i++) {
                             district_data = dataaa[districts[i][0]];
-                            
+
                             if (district_data !== undefined) {
                                 for (j = 0; j < district_data.length; j++) {
                                     reg_data = district_data[j];

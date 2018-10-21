@@ -12,42 +12,25 @@ districts = ["Все районы","Восточный", "Западный","З�
  
 app = Flask(__name__)
 
-url = "https://manaleks.azurewebsites.net/#home"
+url = "https://cityportrait.azurewebsites.net/"
 
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
         district = request.form['district']
-
-        if district == "":
-            return render_template('sorry.html')
-            
-        # yandex_dat = yandex_data.super_run(phrases=phrases, cities=cities)
-        # data = {"yandex_data":yandex_dat}
-
-        #with open("log.txt", "a") as f:
-        #    f.write("\n" + "Request yandex answer: " + str(data) + "\n" + "###" * 50 + "\n")
-
-        #dataj = json.dumps(data, "utf-8")
-
-        #return render_template('main.html', result_yandex=dataj)
-
-        region = geo.get_region(district)
-        districts.remove(district)
-        districts.insert(0, district)
-        return render_template('main.html', districts=districts, regions=region)
-
-    return render_template('main.html', districts=districts)
+        return redirect(url+district, code=302)
+    distr = "Все районы"
+    region = geo.get_region(distr)
+    districts.remove(distr)
+    districts.insert(0, distr)
+    return render_template('main.html', districts=districts, regions=region)
 
 @app.route('/<distr>', methods=['GET', 'POST'])
 def distr(distr):
     if request.method == 'POST':
         district = request.form['district']
-
-        if district == "":
-            return render_template('sorry.html')
-            
+        return redirect(url+district, code=302)
         # yandex_dat = yandex_data.super_run(phrases=phrases, cities=cities)
         # data = {"yandex_data":yandex_dat}
 
@@ -57,21 +40,14 @@ def distr(distr):
         #dataj = json.dumps(data, "utf-8")
 
         #return render_template('main.html', result_yandex=dataj)
-
-        region = geo.get_region(district)
-        districts.remove(district)
-        districts.insert(0, district)
+        
+    if distr in districts:
+        region = geo.get_region(distr)
+        districts.remove(distr)
+        districts.insert(0, distr)
         return render_template('main.html', districts=districts, regions=region)
-
-    return render_template('main.html', districts=distr)
-
-@app.route('/1/1')
-def hello():
-    return redirect(url, code=302)
-
-@app.route('/1/2')
-def hello2():
-    return redirect("https://cityportrait.azurewebsites.net/", code=302)
+    else:
+        return render_template('main.html', districts=districts)
 
 if __name__ == "__main__":
     app.run(debug=True)

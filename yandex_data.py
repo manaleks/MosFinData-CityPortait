@@ -1,8 +1,17 @@
 # -*- coding: utf8 -*-
 import json
 import time
-import tokens
 from urllib.request import urlopen
+import os
+
+
+# Получаем токен яндекса для работы с запросами
+try:
+    import tokens
+    token = tokens.yandex_direct_token
+except ImportError:
+    token = os.environ['yandex_token']
+print(token)
 
 # Данные для изменнения. Города и фразы.
 # – Если фраз будет > 10, то скрипт будет делать их в два этапа,
@@ -16,7 +25,6 @@ PHRASES = ['Портрет района']
 
 url = 'https://api-sandbox.direct.yandex.ru/live/v4/json/'
 
-token = tokens.yandex_direct_token
 data_direct = "data_direct"
 cities_id = {'архангельск': 20, 'назрань': 1092, 'астрахань': 37, 'нальчик': 30,
 'барнаул': 197, 'нижний новгород': 47, 'белгород': 4, 'новосибирск': 65,

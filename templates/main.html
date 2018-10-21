@@ -113,9 +113,6 @@
                             </div>
                         </div>
                         <div style="border:2px solid black;" class="w3-hover-border-green">
-                            <div class="chart-title">
-                                Информация по объектам (торговые точки, учреждения и тп)
-                            </div>
                             <div class="item2">
                                 <!-- <img data-src="holder.js/100%x240/white"> -->
                             </div>
@@ -403,9 +400,10 @@
 
                         var regions = '{{ regions }}';
 
-                        document.getElementsByClassName("item1")[0].innerHTML = '<iframe width="500" height="500" frameborder="9" scrolling="no" src="https://plot.ly/~manaleks/6.embed"></iframe>';
-                        //document.getElementById("log2").innerHTML = "Hello";
-
+                        document.getElementsByClassName("item1")[0].innerHTML = '<iframe width="450" height="450" frameborder="0" scrolling="yes" src="https://plot.ly/~manaleks/6.embed"></iframe>';
+                        document.getElementsByClassName("item2")[0].innerHTML = '<iframe width="450" height="450" frameborder="0" scrolling="no" src="//plot.ly/~manaleks/8.embed"></iframe>';
+                        document.getElementsByClassName("item3")[0].innerHTML = '<iframe width="450" height="450" frameborder="0" scrolling="no" src="//plot.ly/~manaleks/10.embed"></iframe>';
+                        document.getElementsByClassName("item4")[0].innerHTML = '<iframe width="450" height="450" frameborder="0" scrolling="no" src="//plot.ly/~manaleks/12.embed"></iframe>';
                         var res_regions = regions.replace(/&#39;/gi, '"');
                         var w = res_regions.replace(/ ""/gi, " \"'");
                         w = w.replace(/""/gi, "'\"");

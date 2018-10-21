@@ -69,5 +69,9 @@ def distr(distr):
 def hello():
     return redirect(url, code=302)
 
+@app.route('/1/2')
+def hello2():
+    return redirect("https://cityportrait.azurewebsites.net/", code=302)
+
 if __name__ == "__main__":
     app.run(debug=True)
